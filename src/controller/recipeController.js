@@ -5,7 +5,7 @@ class RecipeController
     static async create(req, res)
     {
         const json = req.body
-        const {title, description, ingredients, prepare, user} = json
+        const { title, description, ingredients, prepare, user } = json
 
         if(!title)
             return res.status(400).json({ message: "O título é obrigatório." });
@@ -33,5 +33,20 @@ class RecipeController
         catch (error) {
             return res.status(500).send({ message: "Error : ", data: error.message })
         }
+    }
+    
+    static async getByUser(req, res)
+    {
+        const { user } = req.body
+
+        if(!user)
+            return res.status(400).json({ message: "Algo de muito errado aconteceu." });
+
+        Recipe.find().where({ user: user }).exec((err, resultados) => {
+            if(err)
+                return res.status(400).json({ message: "Deu erro aqui" });
+            else
+                return res.status(200).send(resultados);
+        });
     }
 }
