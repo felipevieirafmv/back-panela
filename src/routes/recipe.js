@@ -3,9 +3,9 @@ const RecipeController = require('../controller/recipeController')
 const router = express.Router();
 
 router
-    .post('/', RecipeController.getByUser)
+    .get('/', RecipeController.getByUser)
     .post('/create', RecipeController.create)
-    .put('/update', RecipeController.updateRecipe)
-    .delete('/delete', RecipeController.deleteRecipe)
+    .put('/update', RecipeController.updateById)
+    .delete('/delete', RecipeController.deleteById)
 
 module.exports = router;

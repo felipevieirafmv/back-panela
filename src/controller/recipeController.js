@@ -37,20 +37,20 @@ class RecipeController
     
     static async getByUser(req, res)
     {
-        const { user } = req.body
+        const { user } = req.query
 
-        if(!user)
-            return res.status(400).json({ message: "Algo de muito errado aconteceu." });
-
-        await Recipe.find().where({ user: user }).exec((err, resultados) => {
-            if(err)
-                return res.status(400).json({ message: "Deu erro aqui" });
-            else
-                return res.status(200).send(resultados);
-        });
+        try
+        {
+            const recipes = await Recipe.find({ user: user })
+            res.status(200).send(recipes);
+        }
+        catch(error)
+        {
+            return res.status(500).send({ message: "Error : ", data: error.message })
+        }
     }
 
-    static async updateRecipe(req, res)
+    static async updateById(req, res)
     {
         const { _id, title, description, ingredients, prepare } = req.body
 
@@ -82,7 +82,7 @@ class RecipeController
         }
     }
 
-    static async deleteRecipe(req, res)
+    static async deleteById(req, res)
     {
         const { _id } = req.body
 
