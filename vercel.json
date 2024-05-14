@@ -2,6 +2,11 @@
     "version": 2,
     "builds": [{ "src": "index.js", "use": "@vercel/node" }],
     "routes": [
-        { "src": "/", "dest": "/" }
+        { "src": "/", "dest": "/" },
+        { "src": "/register", "dest": "/" },
+        { "src": "/recipe", "dest": "/" },
+        { "src": "/recipe/create", "dest": "/" },
+        { "src": "/recipe/update", "dest": "/" },
+        { "src": "/recipe/delete", "dest": "/" }
       ]
 }

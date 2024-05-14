@@ -1,9 +1,11 @@
 const bodyParser = require('body-parser');
-const challenge = require('./challenge.js');
+const user = require('./user.js');
+const recipe = require('./recipe.js');
 
 module.exports = (app) => {
     app.use(
         bodyParser.json(),
-        challenge
+        user,
+        recipe
     )
 }

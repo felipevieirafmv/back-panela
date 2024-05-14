@@ -1,7 +1,9 @@
 const express = require('express');
-const challenge = require('../src/routes/challenge');
+const user = require('../src/routes/user');
+const recipe = require('../src/routes/recipe');
 
 module.exports = function (app) {
     app.use(express.json());
-    app.use('/challenge', challenge);
+    app.use('/', user);
+    app.use('/recipe', recipe);
 }
