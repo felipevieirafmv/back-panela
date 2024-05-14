@@ -16,7 +16,7 @@ class UserController
         if (password != confirmPassword)
             return res.status(400).json({ message: "As senhas não conferem." });
 
-        const userExists = User.findOne({ email: email });
+        const userExists = await User.findOne({ email: email });
         if(userExists)
             return res.status(422).json({ message: "E-mail já cadastrado" });
 
@@ -52,3 +52,5 @@ class UserController
         return res.status(200).send({ userId: user._id })
     }
 }
+
+module.exports = UserController;
