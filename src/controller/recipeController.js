@@ -42,11 +42,58 @@ class RecipeController
         if(!user)
             return res.status(400).json({ message: "Algo de muito errado aconteceu." });
 
-        Recipe.find().where({ user: user }).exec((err, resultados) => {
+        await Recipe.find().where({ user: user }).exec((err, resultados) => {
             if(err)
                 return res.status(400).json({ message: "Deu erro aqui" });
             else
                 return res.status(200).send(resultados);
         });
+    }
+
+    static async updateRecipe(req, res)
+    {
+        const { _id, title, description, ingredients, prepare } = req.body
+
+        const recipe = await Recipe.findById(_id)
+
+        if(!title || title == "")
+            title = recipe.title
+        if(!description || description == "")
+            description = recipe.description
+        if(!ingredients)
+            ingredients = recipe.ingredients
+        if(!prepare)
+            prepare = recipe.prepare
+
+        try
+        {
+            const output = await recipe.update({
+                title: title,
+                description: description,
+                ingredients: ingredients,
+                prepare: prepare
+            })
+            console.log(output)
+            res.status(200).send({ message: "Receita atualizada com sucesso" });
+        }
+        catch(error)
+        {
+            return res.status(500).send({ message: "Error : ", data: error.message })
+        }
+    }
+
+    static async deleteRecipe(req, res)
+    {
+        const { _id } = req.body
+
+        try
+        {
+            await Recipe.deleteById(_id)
+            res.status(200).send({ message: "Receita excluida com sucesso" });
+        }
+        catch(error)
+        {
+            return res.status(500).send({ message: "Error : ", data: error.message })
+        }
     }
 }

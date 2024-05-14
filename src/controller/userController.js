@@ -38,7 +38,7 @@ class UserController
     static async login(req, res)
     {
         const json = req.body;
-        const {email, password} = json;
+        const { email, password } = json;
 
         if (!email)
             return res.status(422).json({ message: "O e-mail é obrigatório." });
