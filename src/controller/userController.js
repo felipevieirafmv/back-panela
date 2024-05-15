@@ -20,6 +20,13 @@ class UserController
         if(userExists)
             return res.status(422).json({ message: "E-mail já cadastrado" });
 
+        if(name.length < 3)
+            return res.status(400).json({ message: "Nome pequeno demais." });
+        if(email.length < 6)
+            return res.status(400).json({ message: "E-mail pequeno demais." });
+        if(password.length < 6)
+            return res.status(400).json({ message: "Senha pequena demais." });
+
         const user = new User({
             name: name,
             email: email,
