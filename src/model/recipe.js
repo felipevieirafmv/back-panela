@@ -16,8 +16,7 @@ const Recipe = mongoose.model('Recipe',
     ingredients: [
         {
             type: String,
-            required: true,
-            minlength: 10
+            required: true
         },
         {
             type: String,
@@ -26,8 +25,7 @@ const Recipe = mongoose.model('Recipe',
     ],
     prepare: [{
         type: String,
-        required: true,
-        minlength: 10
+        required: true
     }],
     user: {
         type: String,
