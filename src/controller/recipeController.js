@@ -88,7 +88,7 @@ class RecipeController
 
         try
         {
-            await Recipe.deleteById(_id)
+            await Recipe.deleteOne(_id)
             res.status(200).send({ message: "Receita excluida com sucesso" });
         }
         catch(error)
