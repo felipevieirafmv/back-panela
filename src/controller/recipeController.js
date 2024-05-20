@@ -93,6 +93,7 @@ class RecipeController
         }
         catch(error)
         {
+            console.log(error)
             return res.status(500).send({ message: "Error : ", data: error.message })
         }
     }
