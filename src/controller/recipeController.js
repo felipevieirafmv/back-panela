@@ -42,7 +42,7 @@ class RecipeController
         try
         {
             const recipes = await Recipe.find({ user: user })
-            res.status(200).send(recipes);
+            res.status(201).send(recipes);
         }
         catch(error)
         {
@@ -74,7 +74,7 @@ class RecipeController
                 prepare: prepare
             })
             console.log(output)
-            res.status(200).send({ message: "Receita atualizada com sucesso" });
+            res.status(201).send({ message: "Receita atualizada com sucesso" });
         }
         catch(error)
         {
@@ -89,7 +89,7 @@ class RecipeController
         try
         {
             await Recipe.deleteOne({ "_id": _id })
-            res.status(200).send({ message: "Receita excluida com sucesso" });
+            res.status(201).send({ message: "Receita excluida com sucesso" });
         }
         catch(error)
         {
