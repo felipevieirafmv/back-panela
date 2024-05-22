@@ -87,13 +87,7 @@ class RecipeController
                 description: description,
                 ingredients: ingredients,
                 prepare: prepare
-            }, function (err) { 
-                if (err){ 
-                    console.log(err) 
-                } 
-                else{ 
-                    console.log("Funfou"); 
-                } })
+            })
             console.log(output)
             res.status(201).send({ message: "Receita atualizada com sucesso" });
         }
