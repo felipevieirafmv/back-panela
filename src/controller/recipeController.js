@@ -82,7 +82,7 @@ class RecipeController
 
         try
         {
-            const output = await recipe.findOneAndUpdate({"_id": _id}, {
+            const output = await Recipe.update({
                 title: title,
                 description: description,
                 ingredients: ingredients,
