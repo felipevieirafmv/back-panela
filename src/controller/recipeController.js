@@ -82,12 +82,18 @@ class RecipeController
 
         try
         {
-            const output = await Recipe.update({
+            const output = await Recipe.findByIdAndUpdate(_id, {
                 title: title,
                 description: description,
                 ingredients: ingredients,
                 prepare: prepare
-            })
+            }, function (err) { 
+                if (err){ 
+                    console.log(err) 
+                } 
+                else{ 
+                    console.log("Funfou"); 
+                } })
             console.log(output)
             res.status(201).send({ message: "Receita atualizada com sucesso" });
         }
