@@ -5,6 +5,7 @@
         { "src": "/", "dest": "/" },
         { "src": "/register", "dest": "/" },
         { "src": "/recipe", "dest": "/" },
+        { "src": "/recipe/get", "dest": "/" },
         { "src": "/recipe/create", "dest": "/" },
         { "src": "/recipe/update", "dest": "/" },
         { "src": "/recipe/delete", "dest": "/" }

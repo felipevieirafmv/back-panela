@@ -4,6 +4,7 @@ const router = express.Router();
 
 router
     .get('/', RecipeController.getByUser)
+    .get('/get', RecipeController.getById)
     .post('/create', RecipeController.create)
     .put('/update', RecipeController.updateById)
     .delete('/delete', RecipeController.deleteById)

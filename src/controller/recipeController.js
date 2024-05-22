@@ -50,6 +50,21 @@ class RecipeController
         }
     }
 
+    static async getById(req, res)
+    {
+        const { id } = req.query
+
+        try
+        {
+            const recipe = await Recipe.findById(id)
+            res.status(201).send(recipe);
+        }
+        catch(error)
+        {
+            return res.status(500).send({ message: "Error : ", data: error.message })
+        }
+    }
+
     static async updateById(req, res)
     {
         const { _id, title, description, ingredients, prepare } = req.body
